@@ -1,7 +1,8 @@
 import './css/styles.css';
 import { fetchCountries } from './js/fetchCountries';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { refs } from './js/refs';
+import getRefs from './js/refs';
+const refs = getRefs();
 import {
   createCountry,
   createListOfCountry,
@@ -18,6 +19,7 @@ refs.inputSearch.addEventListener(
 
 function searchName(event) {
   const value = event.target.value;
+  resetList();
   if (!value) {
     return;
   }
@@ -25,10 +27,12 @@ function searchName(event) {
 }
 
 function searchSuccess(result) {
-  if (result.length > 10) {
-    return manyMatchesFound();
-  } else if (result.length >= 2 && result.length < 10) {
+  if (result.length === 1) {
+    return createCountry(result);
+  } else if (result.length < 10) {
     return createListOfCountry(result);
+  } else if (result.length > 10) {
+    return manyMatchesFound();
   }
 }
 
