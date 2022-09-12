@@ -5,18 +5,17 @@ function createCountry(country) {
   const markup = country
     .map(({ name, capital, population, flags, languages }) => {
       return `
-     <div>
-  <a href="#"><img src="${flags.svg}" alt="${name}" width="200"></a>
-  <p>${name}</p>
-  <ul>
-    <li>Capital: ${capital}</li>
-     <li>Population: ${population}</li>
-      <li>Languages: ${languages}</li>
-  </ul>
-</div>`;
+     <div class="country">
+  <a href="#"><img src="${flags.svg}" alt="${name}" width="100"></a>
+  <p class="country-name">${name}</p>
+  </div>
+  <ul class="country-list">
+    <li class="country-list__item">Capital: <span class="country-list__value">${capital}</span></li>
+     <li class="country-list__item">Population: <span class="country-list__value">${population}</span></li>
+      <li class="country-list__item">Languages: <span class="country-list__value">${languages}</span></li>
+  </ul>`;
     })
     .join('');
-  console.log(markup);
   refs.countryInfo.insertAdjacentHTML('beforeend', markup);
 }
 
@@ -25,7 +24,7 @@ function createListOfCountry(countries) {
   const markup = countries
     .map(({ flags, name }) => {
       return `
-        <div><img src="${flags.svg}" alt="${name}" width="60"><p>${name}</p></div>`;
+        <div class="countries"><img src="${flags.svg}" alt="${name}" width="50"><h2 class="countries-name">${name}</h2></div>`;
     })
     .join('');
   refs.countryList.insertAdjacentHTML('beforeend', markup);

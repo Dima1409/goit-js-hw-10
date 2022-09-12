@@ -1,0 +1,32 @@
+.country {
+    display: flex;
+    align-items: center;
+}
+.country-name {
+    font-size: 44px;
+    font-weight: 700;
+    margin-left: 50px;
+}
+.country-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 38px;
+}
+.country-list__item {
+    color: #000;
+}
+.country-list__value {
+    font-weight: 400;
+    color: rgb(42, 42, 42);
+}
+.countries {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.countries-name {
+    margin: 0;
+    margin-left: 50px;
+}
