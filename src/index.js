@@ -12,7 +12,7 @@ import {
 const debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
-
+refs.inputSearch.setAttribute('placeholder', 'Введіть назву країни');
 refs.inputSearch.addEventListener(
   'input',
   debounce(searchName, DEBOUNCE_DELAY)
@@ -29,14 +29,12 @@ function searchName(event) {
 
 function searchSuccess(result) {
   if (result.length === 1) {
-    console.log(result)
     return createCountry(result);
   } else if (result.length < 10) {
     return createListOfCountry(result);
   } else if (result.length > 10) {
     return manyMatchesFound();
   } else if (result.status === 404) {
-    console.log(result.status);
     return searchError();
   }
 }

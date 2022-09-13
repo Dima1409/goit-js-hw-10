@@ -4,16 +4,16 @@ const refs = getRefs();
 function createCountry(country) {
   const markup = country
     .map(({ name, capital, population, flags, languages }) => {
-      let nameLanguages = languages.map((elem)=>elem.name);
+      let nameOFLanguage = languages.map(elem => elem.name);
       return `
      <div class="country">
-  <a href="#"><img src="${flags.svg}" alt="${name}" width="100"></a>
+  <img src="${flags.svg}" alt="${name}-flag" width="100">
   <p class="country-name">${name}</p>
   </div>
   <ul class="country-list">
     <li class="country-list__item">Capital: <span class="country-list__value">${capital}</span></li>
      <li class="country-list__item">Population: <span class="country-list__value">${population}</span></li>
-      <li class="country-list__item">Languages: <span class="country-list__value">${nameLanguages}</span></li>
+      <li class="country-list__item">Languages: <span class="country-list__value">${nameOFLanguage}</span></li>
   </ul>`;
     })
     .join('');
@@ -25,7 +25,7 @@ function createListOfCountry(countries) {
   const markup = countries
     .map(({ flags, name }) => {
       return `
-        <div class="countries"><img src="${flags.svg}" alt="${name}" width="50"><h2 class="countries-name">${name}</h2></div>`;
+        <div class="countries"><img src="${flags.svg}" alt="${name}" width="50"><p class="countries-name">${name}</p></div>`;
     })
     .join('');
   refs.countryList.insertAdjacentHTML('beforeend', markup);
