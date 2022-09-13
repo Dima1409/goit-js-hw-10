@@ -8,7 +8,7 @@ import {
   createCountry,
   createListOfCountry,
   resetList,
-} from './js/randerCountries';
+} from './js/renderCountries';
 const debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
@@ -19,7 +19,7 @@ refs.inputSearch.addEventListener(
 );
 
 function searchName(event) {
-  const value = event.target.value;
+  const value = event.target.value.trim();
   resetList();
   if (!value) {
     return;
@@ -29,6 +29,7 @@ function searchName(event) {
 
 function searchSuccess(result) {
   if (result.length === 1) {
+    console.log(result)
     return createCountry(result);
   } else if (result.length < 10) {
     return createListOfCountry(result);

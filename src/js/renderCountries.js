@@ -4,6 +4,7 @@ const refs = getRefs();
 function createCountry(country) {
   const markup = country
     .map(({ name, capital, population, flags, languages }) => {
+      let nameLanguages = languages.map((elem)=>elem.name);
       return `
      <div class="country">
   <a href="#"><img src="${flags.svg}" alt="${name}" width="100"></a>
@@ -12,7 +13,7 @@ function createCountry(country) {
   <ul class="country-list">
     <li class="country-list__item">Capital: <span class="country-list__value">${capital}</span></li>
      <li class="country-list__item">Population: <span class="country-list__value">${population}</span></li>
-      <li class="country-list__item">Languages: <span class="country-list__value">${languages}</span></li>
+      <li class="country-list__item">Languages: <span class="country-list__value">${nameLanguages}</span></li>
   </ul>`;
     })
     .join('');
